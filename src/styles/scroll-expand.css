@@ -1,0 +1,46 @@
+.scroll-expand-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.scroll-expand-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.scroll-expand-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scroll-expand-card {
+  position: absolute;
+  border-radius: 12px;
+  overflow: hidden;
+  will-change: transform, opacity;
+  transform-origin: center center;
+}
+
+.scroll-expand-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 2rem;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-expand-card {
+    transition: none !important;
+  }
+}

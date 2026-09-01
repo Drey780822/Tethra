@@ -1,0 +1,339 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #f8f8f7;
+  --foreground: #1a1a1a;
+  --primary: #1c1c2e;
+  --primary-foreground: #ffffff;
+  --secondary: #f0f0ed;
+  --secondary-foreground: #1a1a1a;
+  --accent: #5b5bd6;
+  --accent-foreground: #ffffff;
+  --muted: #e8e8e4;
+  --muted-foreground: #6b6b6b;
+  --card: #ffffff;
+  --card-foreground: #1a1a1a;
+  --border: #e2e2de;
+  --input: #f0f0ed;
+  --ring: #5b5bd6;
+  --radius: 8px;
+  --font-sans: var(--font-plus-jakarta), sans-serif;
+  --font-mono: var(--font-dm-mono), monospace;
+
+  --priority-high: #e53e3e;
+  --priority-high-bg: #fff5f5;
+  --priority-medium: #d97706;
+  --priority-medium-bg: #fffbeb;
+  --priority-low: #38a169;
+  --priority-low-bg: #f0fff4;
+
+  --section-today: #5b5bd6;
+  --section-week: #0891b2;
+  --section-month: #7c3aed;
+  --section-later: #6b7280;
+  --section-backlog: #9ca3af;
+  --section-completed: #38a169;
+}
+
+.dark {
+  --background: #0f0f14;
+  --foreground: #f0f0ed;
+  --primary: #f0f0ed;
+  --primary-foreground: #0f0f14;
+  --secondary: #1c1c2e;
+  --secondary-foreground: #f0f0ed;
+  --accent: #7c7cff;
+  --accent-foreground: #0f0f14;
+  --muted: #1e1e2e;
+  --muted-foreground: #9ca3af;
+  --card: #16161f;
+  --card-foreground: #f0f0ed;
+  --border: #2a2a3e;
+  --input: #1c1c2e;
+  --ring: #7c7cff;
+
+  --priority-high: #fc8181;
+  --priority-high-bg: #2d1515;
+  --priority-medium: #fbbf24;
+  --priority-medium-bg: #2d2410;
+  --priority-low: #68d391;
+  --priority-low-bg: #122d1a;
+
+  --section-today: #7c7cff;
+  --section-week: #22d3ee;
+  --section-month: #a78bfa;
+  --section-later: #9ca3af;
+  --section-backlog: #6b7280;
+  --section-completed: #68d391;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    border-color: var(--border);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--accent-foreground);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+
+  input, textarea {
+    background-color: var(--input);
+    color: var(--foreground);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+  }
+
+  input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 15%, transparent);
+  }
+}
+
+@layer utilities {
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .task-card-hover {
+    transition: all 200ms ease;
+  }
+
+  .task-card-hover:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--foreground) 8%, transparent);
+  }
+
+  .completion-pulse {
+    animation: completionPulse 600ms ease forwards;
+  }
+
+  @keyframes completionPulse {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(0.98); }
+    100% { opacity: 0.5; transform: scale(1); }
+  }
+
+  .fade-in {
+    animation: fadeIn 300ms ease forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .slide-up {
+    animation: slideUp 400ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .modal-backdrop {
+    animation: backdropFade 200ms ease forwards;
+  }
+
+  @keyframes backdropFade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .modal-content {
+    animation: modalScale 200ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes modalScale {
+    from { opacity: 0; transform: scale(0.96) translateY(8px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  .check-animate {
+    animation: checkBounce 300ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
+  @keyframes checkBounce {
+    0% { transform: scale(0); }
+    60% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, var(--accent) 0%, color-mix(in srgb, var(--accent) 60%, var(--foreground)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+  }
+
+  .whiteboard-section {
+    border-left: 3px solid var(--border);
+    padding-left: 1rem;
+    transition: border-color 200ms ease;
+  }
+
+  .whiteboard-section:hover {
+    border-left-color: var(--accent);
+  }
+
+  .section-today { border-left-color: var(--section-today); }
+  .section-week { border-left-color: var(--section-week); }
+  .section-month { border-left-color: var(--section-month); }
+  .section-later { border-left-color: var(--section-later); }
+  .section-backlog { border-left-color: var(--section-backlog); }
+  .section-completed { border-left-color: var(--section-completed); }
+
+  .btn-primary {
+    background-color: var(--accent);
+    color: var(--accent-foreground);
+    border-radius: var(--radius);
+    padding: 0.625rem 1.25rem;
+    font-weight: 600;
+    font-size: 0.875rem;
+    transition: all 150ms ease;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-primary:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--accent) 30%, transparent);
+  }
+
+  .btn-primary:active {
+    transform: scale(0.97);
+    opacity: 1;
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--muted-foreground);
+    border-radius: var(--radius);
+    padding: 0.5rem 0.875rem;
+    font-weight: 500;
+    font-size: 0.875rem;
+    transition: all 150ms ease;
+    border: 1px solid transparent;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-ghost:hover {
+    background-color: var(--muted);
+    color: var(--foreground);
+    border-color: var(--border);
+  }
+
+  .btn-ghost:active {
+    transform: scale(0.97);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--foreground);
+    border-radius: var(--radius);
+    padding: 0.625rem 1.25rem;
+    font-weight: 500;
+    font-size: 0.875rem;
+    transition: all 150ms ease;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-outline:hover {
+    background-color: var(--muted);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .btn-outline:active {
+    transform: scale(0.97);
+  }
+
+  .task-checkbox {
+    width: 1.125rem;
+    height: 1.125rem;
+    border-radius: 50%;
+    border: 1.5px solid var(--border);
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: all 200ms ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+  }
+
+  .task-checkbox:hover {
+    border-color: var(--section-completed);
+    background-color: color-mix(in srgb, var(--section-completed) 10%, transparent);
+  }
+
+  .task-checkbox.completed {
+    background-color: var(--section-completed);
+    border-color: var(--section-completed);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
