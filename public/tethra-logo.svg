@@ -1,0 +1,5 @@
+<svg width="180" height="160" viewBox="0 0 180 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="tethraLogoTitle">
+  <title id="tethraLogoTitle">Tethra</title>
+  <path d="M35,65 L60,20 L85,55 L110,20 L135,65 L105,65 L105,125 L65,125 L65,65 Z" fill="#155E63"/>
+  <path d="M30,138 Q70,120 100,138 Q120,150 145,138" fill="none" stroke="#155E63" stroke-width="6" stroke-linecap="round"/>
+</svg>
