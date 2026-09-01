@@ -25,7 +25,7 @@
 - [Philosophy](#philosophy)
 - [Open source](#-open-source)
 
-## 🎯 Purpose
+## Purpose
 
 Tethra is built around a simple workflow:
 
