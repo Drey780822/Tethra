@@ -15,7 +15,7 @@
 </p>
 
 <p align="center">
-  Tethra is a simple, modern digital whiteboard and task manager designed to help individuals capture, organise, prioritise, and complete their work — without the complexity of traditional project-management platforms.
+  Tethra is a simple, modern digital whiteboard and task manager designed to help individuals capture, organise, prioritise, and complete their work without the complexity of traditional project-management platforms.
 </p>
 
 ## Contents
